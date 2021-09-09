@@ -64,9 +64,9 @@ def setup():
     config_reg = (t_sb << 5) | (filter << 2) | spi3w_en
     ctrl_hum_reg = osrs_h
 
-    writereg(bus, i2c_address, 0xF2, ctrl_hum_reg)
-    writereg(bus, i2c_address,0xF4, ctrl_meas_reg)
-    writereg(bus, i2c_address,0xF5, config_reg)
+    writereg(0xF2, ctrl_hum_reg)
+    writereg(0xF4, ctrl_meas_reg)
+    writereg(0xF5, config_reg)
 
 def readdata():
     data = []
