@@ -16,11 +16,11 @@ digH = []
 
 t_fine = 0.0
 
-setup()
-get_calib_param()
+bme280.setup()
+bme280.get_calib_param()
 
 def job():
-    sensor["Temperature"], sensor["Pressure"], sensor["Humidity"] = readdata()
+    sensor["Temperature"], sensor["Pressure"], sensor["Humidity"] = bme280.readdata()
     print(datetime.datetime.now())
     print(sensor["Temperature"])
 
