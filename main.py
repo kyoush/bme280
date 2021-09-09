@@ -19,7 +19,7 @@ def job():
         writer.writerow([datetime.datetime.now(),sensor["Temperature"],sensor["Humidity"],sensor["Pressure"]])
     f.close()
 
-schedule.every().minute.at(":00").do(job)
+schedule.every().hour.at(":00").do(job)
 
 while True:
     schedule.run_pending()
