@@ -9,6 +9,8 @@ t_fine = 0.0
 bme280.setup()
 bme280.get_calib_param()
 
+sensor = {}
+
 def job():
     sensor["Temperature"], sensor["Pressure"], sensor["Humidity"] = bme280.readdata()
     print(datetime.datetime.now())
