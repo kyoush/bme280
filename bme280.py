@@ -1,12 +1,17 @@
 # coding: utf-8
+import smbus
+bus_number = 1
+bus = smbus.SMBus(bus_number)
+i2c_address = 0x76
+
 digT = []
 digP = []
 digH = []
 
-def writereg(bus, i2c_address, reg_address, data):
+def writereg(reg_address, data):
     bus.write_byte_data(i2c_address, reg_address, data)
 
-def get_calib_param(bus, i2c_address):
+def get_calib_param():
     calib = []
 
     for i in range(0x88, 0x88 + 24):
@@ -46,7 +51,7 @@ def get_calib_param(bus, i2c_address):
         if digH[i] & 0x8000:
             digH[i] = (-digH[i] ^ 0xFFFF) + 1
 
-def setup(bus, i2c_address):
+def setup():
     osrs_t = 1 # Temperature oversampling x 1
     osrs_p = 1 # Pressure oversampling x 1
     osrs_h = 1 # Humidity oversampling x 1
