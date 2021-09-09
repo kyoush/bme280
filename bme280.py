@@ -1,4 +1,8 @@
 # coding: utf-8
+digT = []
+digP = []
+digH = []
+
 def writereg(bus, i2c_address, reg_address, data):
     bus.write_byte_data(i2c_address, reg_address, data)
 
