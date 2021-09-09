@@ -14,13 +14,12 @@ sensor = {}
 
 def job():
     sensor["Temperature"], sensor["Pressure"], sensor["Humidity"] = bme280.readdata()
-    print(datetime.datetime.now())
     with open('data.csv', 'a') as f:
         writer = csv.writer(f)
         writer.writerow([datetime.datetime.now(),sensor["Temperature"],sensor["Humidity"],sensor["Pressure"]])
     f.close()
 
-schedule.every().minutes.at(":00").do(job)
+schedule.every().minute.at(":00").do(job)
 
 while True:
     schedule.run_pending()
