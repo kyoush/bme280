@@ -3,6 +3,7 @@ import schedule
 import time
 import datetime
 import smbus
+import bme280
 
 bus_number = 1
 i2c_address = 0x76
