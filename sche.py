@@ -16,7 +16,7 @@ digH = []
 
 t_fine = 0.0
 
-bme280.setup(bus)
+bme280.setup(bus, i2c_address)
 bme280.get_calib_param()
 
 def job():
