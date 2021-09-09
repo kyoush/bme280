@@ -10,9 +10,6 @@ i2c_address = 0x76
 
 bus = smbus.SMBus(bus_number)
 
-digT = []
-digP = []
-digH = []
 
 t_fine = 0.0
 
