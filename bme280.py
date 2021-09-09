@@ -111,16 +111,3 @@ def compensate_h(adc_h):
     elif var_h < 0.0:
         var_h = 0.0
     return var_h
-
-setup()
-get_calib_param()
-
-if __name__ == '__main__':
-    sensor = {}
-    try:
-        sensor["Temperature"], sensor["Pressure"], sensor["Humidity"] = readdata()
-        print(sensor["Temperature"])
-        print(sensor["Pressure"])
-        print(sensor["Humidity"])
-    except KeyboardInterrupt:
-        pass
