@@ -3,6 +3,7 @@ import schedule
 import time
 import datetime
 import bme280
+import csv
 
 t_fine = 0.0
 
@@ -14,7 +15,10 @@ sensor = {}
 def job():
     sensor["Temperature"], sensor["Pressure"], sensor["Humidity"] = bme280.readdata()
     print(datetime.datetime.now())
-    print(sensor["Temperature"])
+    with open('data.csv', 'a') as f:
+        writer = csv.writer(f)
+        writer.writerow([datetime.datetime.now(),sensor["Temperature"],sensor["Humidity"],sensor["Pressure"]])
+    f.close()
 
 schedule.every().minutes.at(":00").do(job)
 
