@@ -1,18 +1,4 @@
 # coding: utf-8
-
-import smbus
-
-bus_number = 1
-i2c_address = 0x76
-
-bus = smbus.SMBus(bus_number)
-
-digT = []
-digP = []
-digH = []
-
-t_fine = 0.0
-
 def writereg(reg_address, data):
     bus.write_byte_data(i2c_address, reg_address, data)
 
