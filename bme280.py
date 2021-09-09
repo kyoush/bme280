@@ -2,7 +2,7 @@
 def writereg(bus, i2c_address, reg_address, data):
     bus.write_byte_data(i2c_address, reg_address, data)
 
-def get_calib_param():
+def get_calib_param(bus, i2c_address):
     calib = []
 
     for i in range(0x88, 0x88 + 24):

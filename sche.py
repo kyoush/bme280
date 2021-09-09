@@ -17,7 +17,7 @@ digH = []
 t_fine = 0.0
 
 bme280.setup(bus, i2c_address)
-bme280.get_calib_param()
+bme280.get_calib_param(bus, i2c_address)
 
 def job():
     sensor["Temperature"], sensor["Pressure"], sensor["Humidity"] = bme280.readdata()
