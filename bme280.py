@@ -1,5 +1,5 @@
 # coding: utf-8
-def writereg(reg_address, data):
+def writereg(bus, reg_address, data):
     bus.write_byte_data(i2c_address, reg_address, data)
 
 def get_calib_param():
@@ -42,7 +42,7 @@ def get_calib_param():
         if digH[i] & 0x8000:
             digH[i] = (-digH[i] ^ 0xFFFF) + 1
 
-def setup():
+def setup(bus):
     osrs_t = 1 # Temperature oversampling x 1
     osrs_p = 1 # Pressure oversampling x 1
     osrs_h = 1 # Humidity oversampling x 1
@@ -55,9 +55,9 @@ def setup():
     config_reg = (t_sb << 5) | (filter << 2) | spi3w_en
     ctrl_hum_reg = osrs_h
 
-    writereg(0xF2, ctrl_hum_reg)
-    writereg(0xF4, ctrl_meas_reg)
-    writereg(0xF5, config_reg)
+    writereg(bus, 0xF2, ctrl_hum_reg)
+    writereg(bus, 0xF4, ctrl_meas_reg)
+    writereg(bus, 0xF5, config_reg)
 
 def readdata():
     data = []
